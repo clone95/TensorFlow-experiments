@@ -8,4 +8,22 @@ def gen_time_series(batch_size, n_steps):
     series += 0.1 *(np.random.rand(batch_size, n_steps) - 0.5)
     return series[..., np.newaxis].astype(np.float32)
 
-gen_time_series(1,1)
+def gen_cnn_series(examples, lenght):
+    
+    series = []
+
+    for el in range(0, examples):
+        
+        example = [x for x in range(el, el + lenght)]
+        example.append(el + lenght + 7)
+        series.append(example)
+
+    return series
+
+def gen_np_cnn_series(examples, lenght):
+    series = np.random.rand(1, examples, 1)
+
+    
+    return series
+
+print(gen_np_cnn_series(3,4))
